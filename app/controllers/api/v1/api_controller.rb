@@ -1,5 +1,3 @@
 class Api::V1::ApiController < ApplicationController
-  def index
-
-  end
+  protect_from_forgery with: :null_session
 end
