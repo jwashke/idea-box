@@ -7,14 +7,13 @@ RSpec.describe "GET /api/v1/ideas" do
 
     get "/api/v1/ideas", format: :json
     parsed_json = JSON.parse(response.body)
+    recieved_ideas = parsed_json["ideas"]
 
     expect(response.status).to eq(200)
-    expect(parsed_json.count).to eq(2)
+    expect(recieved_ideas.count).to eq(2)
 
-    recieved_idea1 = parsed_json.first
-
-    expect(recieved_idea1.title).to eq(idea2.title)
-    expect(recieved_idea1.body).to eq(idea2.body)
-    expect(recieved_idea1.quality).to eq(idea2.quality)
+    expect(recieved_ideas.first["title"]).to eq(idea2.title)
+    expect(recieved_ideas.first["body"]).to eq(idea2.body)
+    expect(recieved_ideas.first["quality"]).to eq(idea2.quality)
   end
 end
