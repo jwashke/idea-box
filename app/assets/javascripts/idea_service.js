@@ -34,7 +34,11 @@ var ideaService = {
     });
   },
   thumbsUpIdea: function(id) {
-    console.log('up: ' + id);
+    var url = '/api/v1/thumbs?id=' + id
+    $.ajax({
+      url: url,
+      type: 'POST'
+    });
   },
   thumbsDownIdea: function(id) {
     console.log('down: ' + id);
