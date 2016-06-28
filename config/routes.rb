@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :ideas, only: [:index, :create, :destroy]
-      resources :thumbs, only: [:create]
+      post "/thumbs", to: "thumbs#create"
+      delete "/thumbs", to: "thumbs#destroy"
     end
   end
 end
