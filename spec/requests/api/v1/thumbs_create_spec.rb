@@ -9,6 +9,6 @@ RSpec.describe "POST /api/v1/thumbs/" do
     expect(response.status).to eq(204)
 
     updated_idea = Idea.last
-    expect(idea.quality).to eq("plausible")
+    expect(updated_idea.quality).to eq("plausible")
   end
 end
