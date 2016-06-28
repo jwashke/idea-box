@@ -1,7 +1,13 @@
 var view = {
   displayIdeas: function() {
-    $('.ideas').empty();
     ideaService.getIdeas();
+  },
+  drawIdeas: function() {
+    $('.ideas').empty();
+    ideaList.ideas.forEach(function(idea) {
+      $('.ideas').append(idea.html);
+      view.setupIdeaListeners(idea.id);
+    });
   },
   setupListeners: function() {
     this.setupSubmitListener();
