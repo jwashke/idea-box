@@ -5,4 +5,11 @@ class Api::V1::ThumbsController < Api::V1::ApiController
     @idea.save
     render status: 204
   end
+
+  def destroy
+    @idea = Idea.find(params[:id])
+    @idea.cycle_quality_down
+    @idea.save
+    render status: 204
+  end
 end
