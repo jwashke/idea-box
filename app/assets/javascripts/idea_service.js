@@ -13,8 +13,14 @@ var ideaService = {
       });
     });
   },
-  createIdea: function() {
-    $.ajax()
-    console.log('making new idea!')
+  createIdea: function(title, body) {
+    $.post(
+      "api/v1/ideas",
+      {
+        title: title,
+        body: body
+      }
+    );
+    console.log('making new idea!');
   }
 }
