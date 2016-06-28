@@ -1,12 +1,14 @@
 require 'rails_helper'
 
-RSpec.feature "User can visit root path to view ideas", js: true do
+feature "User can visit root path to view ideas", :js => true do
   it "displays all ideas with their title, body, and quality on the page" do
     idea1, idea2 = create_list(:idea, 2)
 
-    visit root_path
+    visit '/'
 
-    expect(page).to have_selector ".idea-info", count: 2
+    wait_for_ajax
+
+    # expect(page).to have_selector ".idea-info", count: 2
 
     within(".idea-#{idea1.id}") do
       expect(page).to have_content(idea1.title)
