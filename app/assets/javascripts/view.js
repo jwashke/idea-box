@@ -1,5 +1,6 @@
 var view = {
   displayIdeas: function() {
+    $('.ideas').empty();
     $.getJSON("/api/v1/ideas").then(function(response) {
       var ideas = response.ideas
       ideas.forEach(function(idea) {
