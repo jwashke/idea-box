@@ -1,8 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 feature "User can visit root path to view ideas", js: true do
   xscenario "They fill in the form to create a new idea" do
-    visit '/'
+    visit "/"
 
     fill_in :newTitle, with: "Idea Title"
     fill_in :newBody, with: "Idea Body"
@@ -25,7 +25,7 @@ def wait_for_ajax_to_finish
 end
 
 def finished_all_ajax_requests?
-  page.evaluate_script('jQuery.active').zero?
+  page.evaluate_script("jQuery.active").zero?
 end
 
 # On the application's root, the user should:
