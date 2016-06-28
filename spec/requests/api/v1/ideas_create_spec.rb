@@ -3,8 +3,10 @@ require "rails_helper"
 RSpec.describe "POST /api/v1/ideas" do
   context "with required params" do
     it "returns 204 no content and creates a new idea in the database" do
+      title = "Idea Title"
+      body = "Idea Body"
 
-      post "/api/v1/ideas", format: :json, title: "Idea Title", body: "Idea Body"
+      post "/api/v1/ideas", format: :json, title: title, body: body
 
       expect(response.status).to eq(204)
 

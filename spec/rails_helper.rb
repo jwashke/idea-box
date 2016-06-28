@@ -1,12 +1,12 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+# This file is copied to spec/ when you run "rails generate rspec:install"
+ENV["RAILS_ENV"] ||= "test"
+require File.expand_path("../../config/environment", __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'spec_helper'
-require 'rspec/rails'
-require 'capybara/rails'
-require 'database_cleaner'
+require "spec_helper"
+require "rspec/rails"
+require "capybara/rails"
+require "database_cleaner"
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -19,7 +19,7 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
   end
 
-  config.before(:each, :js => true) do
+  config.before(:each, js: true) do
     DatabaseCleaner.strategy = :truncation
   end
 
@@ -32,10 +32,10 @@ RSpec.configure do |config|
   end
 
   config.include FactoryGirl::Syntax::Methods
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+  # Remove this line if you"re not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
+  # If you"re not using ActiveRecord, or you"d prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = false
