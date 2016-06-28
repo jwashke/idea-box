@@ -11,7 +11,6 @@ var handlers = {
     var id = this.id;
     ideaService.deleteIdea(id);
     view.displayIdeas();
-    event.preventDefault();
   },
   thumbsUpIdea: function() {
     var id = this.id;
