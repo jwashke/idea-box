@@ -1,28 +1,33 @@
 require 'rails_helper'
 
-feature "User can visit root path to view ideas", :js => true do
-  xit "displays all ideas with their title, body, and quality on the page" do
-    idea1, idea2 = create_list(:idea, 2)
-
+feature "User can visit root path to view ideas", js: true do
+  xscenario "They fill in the form to create a new idea" do
     visit '/'
 
-    wait_for_ajax
+    fill_in :newTitle, with: "Idea Title"
+    fill_in :newBody, with: "Idea Body"
+    click_button "Submit"
 
-    expect(page).to have_selector ".idea-info", count: 2
+    Capybara.default_max_wait_time = 100
 
-    within(".idea-#{idea1.id}") do
-      expect(page).to have_content(idea1.title)
-      expect(page).to have_content(idea1.body)
-      expect(page).to have_content(idea1.quality)
-    end
-
-    within(".idea-#{idea2.id}") do
-      expect(page).to have_content(idea2.title)
-      expect(page).to have_content(idea2.body)
-      expect(page).to have_content(idea2.quality)
+    within(".idea-info") do
+      expect(page).to have_content("Idea Title")
+      expect(page).to have_content("Idea Body")
+      expect(page).to have_content("swill")
     end
   end
 end
+
+def wait_for_ajax_to_finish
+  Timeout.timeout(Capybara.default_max_wait_time) do
+    loop until finished_all_ajax_requests?
+  end
+end
+
+def finished_all_ajax_requests?
+  page.evaluate_script('jQuery.active').zero?
+end
+
 # On the application's root, the user should:
 #
 # See a list of all existing ideas,

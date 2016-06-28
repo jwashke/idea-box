@@ -5,8 +5,11 @@ class Api::V1::IdeasController < Api::V1::ApiController
 
   def create
     @idea = Idea.new(idea_params)
-    @idea.save
-    render status: 204
+    if @idea.save
+      render status: 204
+    else
+      render status: 400
+    end
   end
 
   private
