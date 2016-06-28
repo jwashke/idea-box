@@ -10,6 +10,8 @@ var handlers = {
     view.displayIdeas();
   },
   deleteIdea: function() {
-    console.log(this.id);
+    var id = this.id;
+    ideaService.deleteIdea(id);
+    view.displayIdeas();
   }
 }

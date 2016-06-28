@@ -17,12 +17,18 @@ var ideaService = {
   },
   createIdea: function(title, body) {
     $.post(
-      "api/v1/ideas",
+      "/api/v1/ideas",
       {
         title: title,
         body: body
       }
     );
-    console.log('making new idea!');
+  },
+  deleteIdea: function(id) {
+    var url = '/api/v1/ideas/' + id
+    $.ajax({
+      url: url,
+      type: 'DELETE'
+    });
   }
 }
