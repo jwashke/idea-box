@@ -8,5 +8,8 @@ var handlers = {
     newIdeaTitleInput.val('');
     newIdeaBodyInput.val('');
     view.displayIdeas();
+  },
+  deleteIdea: function() {
+    console.log(this.id);
   }
 }

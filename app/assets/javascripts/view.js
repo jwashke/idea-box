@@ -8,5 +8,9 @@ var view = {
   },
   setupSubmitListener() {
     $('#submit').click(handlers.createIdea);
+  },
+  setupDeleteListener(id) {
+    var buttonId = '#' + id
+    $(buttonId).click(handlers.deleteIdea);
   }
 }
