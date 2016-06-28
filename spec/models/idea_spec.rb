@@ -126,4 +126,62 @@ RSpec.describe Idea, type: :model do
       end
     end
   end
+
+  describe "#cycle_quality_up" do
+    context "with quality swill" do
+      it "changes the quality to plausible" do
+        idea = create(:idea)
+
+        idea.cycle_quality_up
+        expect(idea.quality).to eq("plausible")
+      end
+    end
+
+    context "with quality plausible" do
+      it "changes the quality to genius" do
+        idea = create(:plausible_idea)
+
+        idea.cycle_quality_up
+        expect(idea.quality).to eq("genius")
+      end
+    end
+
+    context "with quality genius" do
+      it "does not change the quality" do
+        idea = create(:genius_idea)
+
+        idea.cycle_quality_up
+        expect(idea.quality).to eq("genius")
+      end
+    end
+  end
+
+  describe "#cycle_quality_down" do
+    context "with quality swill" do
+      it "does not change the quality" do
+        idea = create(:idea)
+
+        idea.cycle_quality_down
+        expect(idea.quality).to eq("swill")
+      end
+    end
+
+    context "with quality plausible" do
+      it "changes the quality to swill" do
+        idea = create(:plausible_idea)
+
+        idea.cycle_quality_down
+        expect(idea.quality).to eq("swill")
+      end
+    end
+
+    context "with quality genius" do
+      it "changes the quality to plausible" do
+        idea = create(:genius_idea)
+
+        idea.cycle_quality_down
+        expect(idea.quality).to eq("plausible")
+      end
+    end
+  end
 end

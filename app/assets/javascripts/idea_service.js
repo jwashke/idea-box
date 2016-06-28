@@ -5,22 +5,46 @@ var ideaService = {
       ideas.forEach(function(idea) {
         $('.ideas').append(
           "<div class='col-xs-12 idea-info idea-" + idea.id + "'>" +
-            "<h4>" + idea.title + "</h4>" +
+            "<h4 class='icon-title'>" + idea.title + "</h4> " +
+            "<a class='icon-button delete-button pull-right delete-" + idea.id + "' id='" + idea.id + "'><i class='fa fa-times fa-lg'></i></a>" +
             "<p>" + idea.body + "</p>" +
-            "<p>" + idea.quality + "</p>" +
-          "</div>"
+            "<p>Quality: " + idea.quality +
+            "<br><a class='icon-button thumbs-up-" + idea.id + "' id='" + idea.id + "'><i class='fa fa-thumbs-up fa-lg'></i></a>" +
+            "    <a class='icon-button thumbs-down-" + idea.id + "' id='" + idea.id + "'><i class='fa fa-thumbs-down fa-lg'></i></a></p>" +
+          "<br><hr class='idea-line'><br></div>"
         );
+        view.setupIdeaListeners(idea.id);
       });
     });
   },
   createIdea: function(title, body) {
     $.post(
-      "api/v1/ideas",
+      "/api/v1/ideas",
       {
         title: title,
         body: body
       }
     );
-    console.log('making new idea!');
+  },
+  deleteIdea: function(id) {
+    var url = '/api/v1/ideas/' + id
+    $.ajax({
+      url: url,
+      type: 'DELETE'
+    });
+  },
+  thumbsUpIdea: function(id) {
+    var url = '/api/v1/thumbs?id=' + id
+    $.ajax({
+      url: url,
+      type: 'POST'
+    });
+  },
+  thumbsDownIdea: function(id) {
+    var url = '/api/v1/thumbs?id=' + id
+    $.ajax({
+      url: url,
+      type: 'DELETE'
+    });
   }
 }

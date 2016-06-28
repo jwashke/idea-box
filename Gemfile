@@ -10,6 +10,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'responders'
 gem 'bootstrap', '~> 4.0.0.alpha3'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'byebug'
