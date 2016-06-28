@@ -12,15 +12,12 @@ class Api::V1::IdeasController < Api::V1::ApiController
     end
   end
 
-<<<<<<< HEAD
   def destroy
     @idea = Idea.find(params[:id])
     @idea.destroy
     render status: 204
   end
 
-=======
->>>>>>> master
   private
 
   def idea_params
