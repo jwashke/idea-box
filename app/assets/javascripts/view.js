@@ -27,7 +27,7 @@ var view = {
       handlers.delegateClick(event);
     });
     $('.ideas').focusout(function(event) {
-      console.log('focusout');
+      handlers.delegateFocusout(event);
     });
   }
 }

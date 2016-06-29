@@ -56,5 +56,16 @@ var ideaService = {
       url: url,
       type: 'DELETE'
     });
+  },
+  editIdea: function(id, value, field) {
+    var url = '/api/v1/ideas/' + id;
+    $.ajax({
+      url: url,
+      type: 'PATCH',
+      data: {
+        field: field,
+        value: value
+      }
+    })
   }
 }

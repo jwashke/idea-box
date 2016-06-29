@@ -34,5 +34,17 @@ var ideaList = {
     } else if (idea.quality === "plausible") {
       idea.quality = "swill";
     }
+  },
+  editIdea: function(id, target, value) {
+    var idea = this.ideas.find(function(idea) {
+      return idea.id === parseInt(id);
+    });
+    if (target.className.includes('ideaTitle')) {
+      idea.title = value;
+      ideaService.editIdea(id, value, 'title')
+    } else if (target.className.includes('ideaBody')) {
+      idea.body = value;
+      ideaService.editIdea(id, value, 'body')
+    }
   }
 }

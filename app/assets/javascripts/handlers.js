@@ -43,5 +43,14 @@ var handlers = {
     } else if (target.className.includes('ideaBody')) {
       $(target).attr('contenteditable', 'true');
     }
+  },
+  delegateFocusout: function(event) {
+    var target = event.target
+    var id = event.target.parentElement.id
+    var value = event.target.innerText
+    ideaList.editIdea(id, target, value);
+    // check if valid?(optional)
+    // save to idea
+    // save to database
   }
 }
