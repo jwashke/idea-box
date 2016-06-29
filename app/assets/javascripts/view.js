@@ -6,8 +6,8 @@ var view = {
     $('.ideas').empty();
     ideaList.ideas.forEach(function(idea) {
       idea.html = "<div id = '" + idea.id + "'class='col-xs-12 idea-info idea-" + idea.id + "'>" +
-            "<h4 class='ideaTitle'>" + idea.title + "</h4> " +
-            "<div class=idea-'" + idea.id + "'><a class='icon-button delete-button pull-right delete-" + idea.id + "' id='" + idea.id + "'><i id='" + idea.id + "'class='fa fa-times fa-lg deleteButton'></i></a></div>" +
+            "<h4 class='ideaTitle icon-title'>" + idea.title + "</h4> " +
+            "<a class='icon-button delete-button pull-right delete-" + idea.id + "' id='" + idea.id + "'><i id='" + idea.id + "'class='fa fa-times fa-lg deleteButton'></i></a>" +
             "<p class='ideaBody'>" + idea.body + "</p>" +
             "<p>Quality: " + idea.quality +
             "<br><a class='icon-button thumbs-up-" + idea.id + "' id='" + idea.id + "'><i id='" + idea.id + "' class='fa fa-thumbs-up fa-lg thumbsUpButton'></i></a>" +
@@ -19,6 +19,7 @@ var view = {
   setupListeners: function() {
     this.setupSubmitListener();
     this.setupSearchListener();
+    this.setupOrderListeners();
   },
   setupSubmitListener: function() {
     $('#submit').click(handlers.createIdea);
@@ -39,6 +40,17 @@ var view = {
     $('#clearSearch').on('click', function() {
       $('#searchBar').val('');
       $('#searchBar').trigger('input');
+    })
+  },
+  setupOrderListeners: function() {
+    $('.orderGroup').on('click', function() {
+      if (event.target.innerText === "Ascending") {
+        event.target.innerText = "Descending"
+      } else {
+        event.target.innerText = "Ascending"
+      }
+      ideaList.orderIdeas();
+      view.drawIdeas();
     })
   }
 }

@@ -1,35 +1,41 @@
 <div id="top" class="container">
-      <div class="header clearfix">
-        <h3 class="text-muted">Ideas Box</h3>
-      </div>
+  <div class="header clearfix">
+    <h3 class="text-muted">Ideas Box</h3>
+  </div>
 
-      <div class="input-group col-md-6 col-xs-12">
-        <div class="row">
-          <form class="form-inline">
-            <div class="form-group">
-        <input id="searchBar" type="text" class="form-control" placeholder="Search" />
-      </div>
+  <div class="input-group col-md-6 col-xs-12">
+      <form class="form-inline">
+        <div class="form-group">
+          <input id="searchBar" type="text" class="form-control" placeholder="Search" />
+        </div>
         <button type="button" id="clearSearch" class="btn btn-primary">Clear</button>
       </form>
-        </div>
-      </div>
-      <div class="col-xs-12">
-      <div class="row marketing idea-form">
-          <h5 class="text-muted">Create a new Idea</h5>
-          <fieldset class="form-group">
-            <input type="text" class="form-control" id="newTitle" placeholder="Title">
-          </fieldset>
-          <fieldset class="form-group">
-            <textarea class="form-control" id="newBody" rows="3" placeholder="description"></textarea>
-          </fieldset>
-          <button id="submit" class="btn btn-primary">Submit</button>
-      </div>
+  </div>
+
+  <div class="col-md-6 col-xs-12">
+    <small class="text-muted order-label">Sort By Quality:</small>
+    <div class="btn-group orderGroup" role="group" aria-label="Basic example">
+      <button id="swill" type="button" class="btn btn-primary">Sort</button>
     </div>
+  </div>
 
-      <div class="row marketing ideas"></div>
+  <div class="col-xs-12">
+    <div class="row marketing idea-form">
+      <h5 class="text-muted">Create a new Idea</h5>
+      <fieldset class="form-group">
+        <input type="text" class="form-control" id="newTitle" placeholder="Title">
+      </fieldset>
+      <fieldset class="form-group">
+        <textarea class="form-control" id="newBody" rows="3" placeholder="description"></textarea>
+      </fieldset>
+        <button id="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
 
-      <footer class="footer">
-        <p><a href="#top">Go to top</a></p>
-      </footer>
+  <div class="row marketing ideas"></div>
 
-    </div> <!-- /container -->
+  <footer class="footer">
+    <p><a href="#top">Go to top</a></p>
+  </footer>
+
+</div> <!-- /container -->
