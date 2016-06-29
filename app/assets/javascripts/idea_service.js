@@ -5,8 +5,8 @@ var ideaService = {
       ideas.forEach(function(idea) {
         idea.html =
           "<div class='col-xs-12 idea-info idea-" + idea.id + "'>" +
-            "<h4 class='icon-title'>" + idea.title + "</h4> " +
             "<a class='icon-button delete-button pull-right delete-" + idea.id + "' id='" + idea.id + "'><i id='" + idea.id + "'class='fa fa-times fa-lg deleteButton'></i></a>" +
+            "<h4 class='icon-title'>" + idea.title + "</h4> " +
             "<p>" + idea.body + "</p>" +
             "<p>Quality: " + idea.quality +
             "<br><a class='icon-button thumbs-up-" + idea.id + "' id='" + idea.id + "'><i id='" + idea.id + "' class='fa fa-thumbs-up fa-lg thumbsUpButton'></i></a>" +
