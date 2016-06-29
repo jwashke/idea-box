@@ -40,11 +40,19 @@ var ideaList = {
       return idea.id === parseInt(id);
     });
     if (target.className.includes('ideaTitle')) {
-      idea.title = value;
-      ideaService.editIdea(id, value, 'title')
+      if (idea.title !== value && value.trim().length > 0) {
+        idea.title = value;
+        ideaService.editIdea(id, value, 'title');
+      } else {
+        target.innerText = idea.title;
+      }
     } else if (target.className.includes('ideaBody')) {
-      idea.body = value;
-      ideaService.editIdea(id, value, 'body')
+      if (idea.body !== value  && value.trim().length > 0) {
+        idea.body = value;
+        ideaService.editIdea(id, value, 'body');
+      } else {
+        target.innerText = idea.body;
+      }
     }
   }
 }

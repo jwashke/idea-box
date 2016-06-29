@@ -49,8 +49,5 @@ var handlers = {
     var id = event.target.parentElement.id
     var value = event.target.innerText
     ideaList.editIdea(id, target, value);
-    // check if valid?(optional)
-    // save to idea
-    // save to database
   }
 }
