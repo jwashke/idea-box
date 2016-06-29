@@ -36,5 +36,9 @@ var view = {
       var searchTerm = this.value;
       handlers.searchIdeas(searchTerm);
     });
+    $('#clearSearch').on('click', function() {
+      $('#searchBar').val('');
+      $('#searchBar').trigger('input');
+    })
   }
 }
