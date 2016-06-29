@@ -6,14 +6,13 @@ var ideaService = {
         idea.html =
           "<div class='col-xs-12 idea-info idea-" + idea.id + "'>" +
             "<h4 class='icon-title'>" + idea.title + "</h4> " +
-            "<a class='icon-button delete-button pull-right delete-" + idea.id + "' id='" + idea.id + "'><i class='fa fa-times fa-lg'></i></a>" +
+            "<a class='icon-button delete-button pull-right delete-" + idea.id + "' id='" + idea.id + "'><i id='" + idea.id + "'class='fa fa-times fa-lg deleteButton'></i></a>" +
             "<p>" + idea.body + "</p>" +
             "<p>Quality: " + idea.quality +
-            "<br><a class='icon-button thumbs-up-" + idea.id + "' id='" + idea.id + "'><i class='fa fa-thumbs-up fa-lg'></i></a>" +
-            "    <a class='icon-button thumbs-down-" + idea.id + "' id='" + idea.id + "'><i class='fa fa-thumbs-down fa-lg'></i></a></p>" +
+            "<br><a class='icon-button thumbs-up-" + idea.id + "' id='" + idea.id + "'><i id='" + idea.id + "' class='fa fa-thumbs-up fa-lg thumbsUpButton'></i></a>" +
+            "    <a class='icon-button thumbs-down-" + idea.id + "' id='" + idea.id + "'><i id='" + idea.id + "' class='fa fa-thumbs-down fa-lg thumbsDownButton'></i></a></p>" +
           "<br><hr class='idea-line'><br></div>";
           ideaList.ideas.push(idea)
-        view.setupIdeaListeners(idea.id);
       });
       view.drawIdeas();
     });
@@ -24,6 +23,16 @@ var ideaService = {
       {
         title: title,
         body: body
+      }
+    ).then(function(response) {
+      var idea = {
+        id: response.id,
+        title: title,
+        body: body,
+        quality: response.quality
+      }
+      ideaList.ideas.unshift(idea);
+      view.drawIdeas();
       }
     );
   },
