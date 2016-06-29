@@ -15,7 +15,10 @@ class Api::V1::IdeasController < Api::V1::ApiController
   end
 
   def update
-    byebug
+    updatedField = {}
+    updatedField[params[:field].to_sym] = params[:value]
+    @idea = Idea.find(params[:id])
+    @idea.update(updatedField)
   end
 
   private
