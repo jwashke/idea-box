@@ -37,6 +37,11 @@ var handlers = {
       ideaService.thumbsDownIdea(id);
       ideaList.thumbsDownIdea(id);
       view.drawIdeas();
+    } else if (target.className.includes('ideaTitle')) {
+      console.log(event.target.parentElement.id);
+      $(target).attr('contenteditable', 'true');
+    } else if (target.className.includes('ideaBody')) {
+      $(target).attr('contenteditable', 'true');
     }
   }
 }
