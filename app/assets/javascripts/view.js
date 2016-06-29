@@ -18,6 +18,7 @@ var view = {
   },
   setupListeners: function() {
     this.setupSubmitListener();
+    this.setupSearchListener();
   },
   setupSubmitListener: function() {
     $('#submit').click(handlers.createIdea);
@@ -28,6 +29,12 @@ var view = {
     });
     $('.ideas').focusout(function(event) {
       handlers.delegateFocusout(event);
+    });
+  },
+  setupSearchListener: function() {
+    $('#searchBar').on('input', function() {
+      var searchTerm = this.value;
+      handlers.searchIdeas(searchTerm);
     });
   }
 }
