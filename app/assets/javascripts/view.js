@@ -19,6 +19,7 @@ var view = {
   setupListeners: function() {
     this.setupSubmitListener();
     this.setupSearchListener();
+    this.setupOrderListeners();
   },
   setupSubmitListener: function() {
     $('#submit').click(handlers.createIdea);
@@ -39,6 +40,17 @@ var view = {
     $('#clearSearch').on('click', function() {
       $('#searchBar').val('');
       $('#searchBar').trigger('input');
+    })
+  },
+  setupOrderListeners: function() {
+    $('.orderGroup').on('click', function() {
+      if (event.target.innerText === "Ascending") {
+        event.target.innerText = "Descending"
+      } else {
+        event.target.innerText = "Ascending"
+      }
+      ideaList.orderIdeas();
+      view.drawIdeas();
     })
   }
 }

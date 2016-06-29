@@ -1,5 +1,6 @@
 var ideaList = {
   ideas: [],
+  sorted: false,
   deleteIdea: function(id) {
     var index;
     this.ideas.some(function(idea, i) {
@@ -48,6 +49,20 @@ var ideaList = {
       } else {
         target.innerText = idea.body;
       }
+    }
+  },
+  orderIdeas: function() {
+    if (this.sorted === false) {
+      this.ideas.sort(function(a, b) {
+        if (a.quality < b.quality) //sort string ascending
+          return -1;
+        if (a.quality > b.quality)
+          return 1;
+        return 0 //default return value (no sorting)
+      })
+      this.sorted = true;
+    } else {
+      this.ideas.reverse();
     }
   }
 }
