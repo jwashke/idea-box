@@ -1,10 +1,5 @@
 var ideaList = {
   ideas: [],
-  createIdeaFromAjax: function(idea) {
-
-  },
-  createIdeaFromForm: function(title, body) {
-  },
   deleteIdea: function(id) {
     var index;
     this.ideas.some(function(idea, i) {

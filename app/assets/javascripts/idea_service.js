@@ -3,16 +3,10 @@ var ideaService = {
     $.getJSON("/api/v1/ideas").then(function(response) {
       var ideas = response.ideas
       ideas.forEach(function(idea) {
-        idea.html =
-          "<div class='col-xs-12 idea-info idea-" + idea.id + "'>" +
-            "<a class='icon-button delete-button pull-right delete-" + idea.id + "' id='" + idea.id + "'><i id='" + idea.id + "'class='fa fa-times fa-lg deleteButton'></i></a>" +
-            "<h4 class='icon-title'>" + idea.title + "</h4> " +
-            "<p>" + idea.body + "</p>" +
-            "<p>Quality: " + idea.quality +
-            "<br><a class='icon-button thumbs-up-" + idea.id + "' id='" + idea.id + "'><i id='" + idea.id + "' class='fa fa-thumbs-up fa-lg thumbsUpButton'></i></a>" +
-            "    <a class='icon-button thumbs-down-" + idea.id + "' id='" + idea.id + "'><i id='" + idea.id + "' class='fa fa-thumbs-down fa-lg thumbsDownButton'></i></a></p>" +
-          "<br><hr class='idea-line'><br></div>";
-          ideaList.ideas.push(idea)
+        if (idea.body.length > 100) {
+          idea.body = idea.body.substring(0, 100).split(" ").slice(0, -1).join(" ") + "...";
+        }
+        ideaList.ideas.push(idea)
       });
       view.drawIdeas();
     });
@@ -30,6 +24,9 @@ var ideaService = {
         title: title,
         body: body,
         quality: response.quality
+      }
+      if (idea.body.length > 100) {
+        idea.body = idea.body.substring(0, 100).split(" ").slice(0, -1).join(" ") + "...";
       }
       ideaList.ideas.unshift(idea);
       view.drawIdeas();
