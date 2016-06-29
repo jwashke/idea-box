@@ -14,6 +14,10 @@ class Api::V1::IdeasController < Api::V1::ApiController
     render status: 204
   end
 
+  def update
+    byebug
+  end
+
   private
 
   def idea_params
