@@ -11,6 +11,7 @@ gem 'puma'
 gem 'responders'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem "font-awesome-rails"
+gem 'faker'
 
 group :development, :test do
   gem 'byebug'
