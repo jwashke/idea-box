@@ -49,5 +49,16 @@ var handlers = {
     var id = event.target.parentElement.id
     var value = event.target.innerText
     ideaList.editIdea(id, target, value);
+  },
+  searchIdeas: function(searchTerm) {
+    var $ideas = $('.idea-info')
+    $ideas.each(function(index, idea) {
+      $idea = $(idea);
+      if ($idea.children('h4')[0].innerText.includes(searchTerm) || $idea.children('p')[0].innerText.includes(searchTerm)) {
+        $idea.show();
+      } else {
+        $idea.hide();
+      }
+    })
   }
 }

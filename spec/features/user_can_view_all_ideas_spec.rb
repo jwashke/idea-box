@@ -8,7 +8,7 @@ feature "User can visit root path to view ideas", js: true do
     fill_in :newBody, with: "Idea Body"
     click_button "Submit"
 
-    Capybara.default_max_wait_time = 100
+    wait_for_ajax_to_finish
 
     within(".idea-info") do
       expect(page).to have_content("Idea Title")
