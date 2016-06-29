@@ -5,22 +5,22 @@ class Api::V1::IdeasController < Api::V1::ApiController
 
   def create
     @idea = Idea.new(idea_params)
-    if @idea.save
-      render status: 204
-    else
-      render status: 400
-    end
+    render status: 400 unless @idea.save
   end
 
-<<<<<<< HEAD
   def destroy
     @idea = Idea.find(params[:id])
     @idea.destroy
     render status: 204
   end
 
-=======
->>>>>>> master
+  def update
+    updatedField = {}
+    updatedField[params[:field].to_sym] = params[:value]
+    @idea = Idea.find(params[:id])
+    @idea.update(updatedField)
+  end
+
   private
 
   def idea_params
