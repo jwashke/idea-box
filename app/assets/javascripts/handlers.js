@@ -6,22 +6,6 @@ var handlers = {
     newIdeaTitleInput.val('');
     newIdeaBodyInput.val('');
   },
-  deleteIdea: function(event) {
-    var id = event.currentTarget.id;
-    ideaService.deleteIdea(id);
-    ideaList.deleteIdea(id)
-    view.drawIdeas();
-  },
-  thumbsUpIdea: function() {
-    var id = this.id;
-    ideaService.thumbsUpIdea(id);
-    view.drawIdeas();
-  },
-  thumbsDownIdea: function() {
-    var id = this.id;
-    ideaService.thumbsDownIdea(id);
-    view.drawIdeas();
-  },
   delegateClick: function(event) {
     var target = event.target;
     var id = target.id
@@ -38,7 +22,6 @@ var handlers = {
       ideaList.thumbsDownIdea(id);
       view.drawIdeas();
     } else if (target.className.includes('ideaTitle')) {
-      console.log(event.target.parentElement.id);
       $(target).attr('contenteditable', 'true');
     } else if (target.className.includes('ideaBody')) {
       $(target).attr('contenteditable', 'true');

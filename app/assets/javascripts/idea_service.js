@@ -6,7 +6,8 @@ var ideaService = {
         if (idea.body.length > 100) {
           idea.body = idea.body.substring(0, 100).split(" ").slice(0, -1).join(" ") + "...";
         }
-        ideaList.ideas.push(idea)
+        var newIdea = new Idea(idea.id, idea.title, idea.body, idea.quality)
+        ideaList.ideas.push(newIdea)
       });
       view.drawIdeas();
     });
@@ -19,16 +20,11 @@ var ideaService = {
         body: body
       }
     ).then(function(response) {
-      var idea = {
-        id: response.id,
-        title: title,
-        body: body,
-        quality: response.quality
+      if (body.length > 100) {
+        body = body.substring(0, 100).split(" ").slice(0, -1).join(" ") + "...";
       }
-      if (idea.body.length > 100) {
-        idea.body = idea.body.substring(0, 100).split(" ").slice(0, -1).join(" ") + "...";
-      }
-      ideaList.ideas.unshift(idea);
+      var newIdea = new Idea(response.id, title, body, response.quality)
+      ideaList.ideas.unshift(newIdea);
       view.drawIdeas();
       }
     );
