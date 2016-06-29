@@ -35,11 +35,11 @@ var ideaList = {
   },
   sortIdeas: function() {
     this.ideas.sort(function(a, b) {
-      if (a.quality < b.quality) //sort string ascending
+      if (a.quality < b.quality)
         return -1;
       if (a.quality > b.quality)
         return 1;
-      return 0 //default return value (no sorting)
+      return 0 
     })
   },
   findIdea: function(id) {

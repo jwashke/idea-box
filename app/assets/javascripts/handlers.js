@@ -10,17 +10,11 @@ var handlers = {
     var target = event.target;
     var id = target.id
     if (target.className.includes('deleteButton')) {
-      ideaService.deleteIdea(id);
-      ideaList.deleteIdea(id)
-      view.drawIdeas();
+      this.deleteIdea();
     } else if (target.className.includes('thumbsUpButton')) {
-      ideaService.thumbsUpIdea(id);
-      ideaList.thumbsUpIdea(id);
-      view.drawIdeas();
+      this.thumbsUpIdea(id);
     } else if (target.className.includes('thumbsDownButton')) {
-      ideaService.thumbsDownIdea(id);
-      ideaList.thumbsDownIdea(id);
-      view.drawIdeas();
+      this.thumbsDownIdea(id);
     } else if (target.className.includes('ideaTitle')) {
       $(target).attr('contenteditable', 'true');
     } else if (target.className.includes('ideaBody')) {
@@ -37,11 +31,24 @@ var handlers = {
     var $ideas = $('.idea-info')
     $ideas.each(function(index, idea) {
       $idea = $(idea);
-      if ($idea.children('h4')[0].innerText.includes(searchTerm) || $idea.children('p')[0].innerText.includes(searchTerm)) {
-        $idea.show();
-      } else {
-        $idea.hide();
-      }
+      var inTitle = $idea.children('h4')[0].innerText.includes(searchTerm);
+      var inBody = $idea.children('p')[0].innerText.includes(searchTerm);
+      inTitle || inBody ? $idea.show() : $idea.hide();
     })
+  },
+  deleteIdea: function(id) {
+    ideaService.deleteIdea(id);
+    ideaList.deleteIdea(id)
+    view.drawIdeas();
+  },
+  thumbsUpIdea: function(id) {
+    ideaService.thumbsUpIdea(id);
+    ideaList.thumbsUpIdea(id);
+    view.drawIdeas();
+  },
+  thumbsDownIdea: function(id) {
+    ideaService.thumbsDownIdea(id);
+    ideaList.thumbsDownIdea(id);
+    view.drawIdeas();
   }
 }
