@@ -4,6 +4,7 @@ class CreateIdeas < ActiveRecord::Migration
       t.string :title
       t.text :body
       t.integer :quality, default: 0
+      t.boolean :active, default: true
 
       t.timestamps null: false
     end

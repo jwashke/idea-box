@@ -3,20 +3,28 @@
     <h3 class="text-muted">Ideas Box</h3>
   </div>
 
-  <div class="input-group col-md-6 col-xs-12">
+  <div class="input-group col-md-6 col-xs-12 search">
       <form class="form-inline">
-        <div class="form-group">
-          <input id="searchBar" type="text" class="form-control" placeholder="Search" />
+        <div class="row">
+          <div class="form-group col-xs-8">
+            <input id="searchBar" type="text" class="form-control" placeholder="Search" />
+          </div>
+          <div class="col-xs-4">
+            <button type="button" id="clearSearch" class="btn btn-primary">Clear</button>
+          </div>
         </div>
-        <button type="button" id="clearSearch" class="btn btn-primary">Clear</button>
       </form>
   </div>
 
-  <div class="col-md-6 col-xs-12">
+  <div class="col-md-6 col-xs-12 sort">
     <small class="text-muted order-label">Sort By Quality:</small>
     <div class="btn-group orderGroup" role="group" aria-label="Basic example">
       <button id="swill" type="button" class="btn btn-primary">Sort</button>
     </div>
+  </div>
+  <div class="col-xs-12">
+    <h5 class="text-muted">View by tag</h5>
+    <div class="tags"></div>
   </div>
 
   <div class="col-xs-12">

@@ -52,5 +52,12 @@ var handlers = {
     ideaService.thumbsDownIdea(id);
     ideaList.thumbsDownIdea(id);
     view.drawIdeas();
+  },
+  tagClick: function(event) {
+    var targetText = $(event.target).text();
+    if (targetText === 'all')
+      view.showAllIdeas();
+    else
+      view.filterIdeasByTag(targetText);
   }
 }

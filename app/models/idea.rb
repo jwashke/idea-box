@@ -17,8 +17,14 @@ class Idea < ActiveRecord::Base
 
   def find_or_create_tags(tags)
     tags.each do |tag|
+      tag = tag.downcase
       self.tags << Tag.where(name: tag).first_or_create
     end
+    self.save
+  end
+
+  def deactivate
+    self.active = false
     self.save
   end
 end

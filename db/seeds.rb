@@ -20,7 +20,7 @@ end
 def get_tags
   tags_array = []
   rand(1..4).times do
-    tag = Tag.where(name: "#{Faker::Hacker.abbreviation}").first_or_create
+    tag = Tag.where(name: "#{Faker::Hacker.abbreviation.downcase}").first_or_create
     tags_array.push(tag)
   end
   tags_array

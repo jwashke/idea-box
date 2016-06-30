@@ -1,6 +1,6 @@
 class Api::V1::IdeasController < Api::V1::ApiController
   def index
-    @ideas = Idea.order("created_at DESC")
+    @ideas = Idea.where(active: true).order("created_at DESC")
   end
 
   def create
@@ -11,7 +11,7 @@ class Api::V1::IdeasController < Api::V1::ApiController
 
   def destroy
     @idea = Idea.find(params[:id])
-    @idea.destroy
+    @idea.deactivate
     render status: 204
   end
 

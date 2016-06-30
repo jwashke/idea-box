@@ -6,7 +6,14 @@ var ideaService = {
         if (idea.body.length > 100)
           idea.body = idea.body.substring(0, 100).split(" ").slice(0, -1).join(" ") + "...";
         var tags = idea.tags.map(function(tag) {
-          return new Tag(tag.name);
+          var containsTag = tagList.tags.filter(function(oldTag) {
+            return tag.name === oldTag.name;
+          }).length > 0
+          var newTag = new Tag(tag.name)
+          if (!containsTag) {
+            tagList.tags.push(newTag)
+          }
+          return newTag;
         })
         var newIdea = new Idea(idea.id, idea.title, idea.body, idea.quality, tags)
         ideaList.ideas.push(newIdea)
@@ -27,7 +34,14 @@ var ideaService = {
       if (body.length > 100)
         body = body.substring(0, 100).split(" ").slice(0, -1).join(" ") + "...";
       tags = tags.map(function(tag) {
-        return new Tag(tag);
+        var newTag = new Tag(tag.toLowerCase());
+        var containsTag = tagList.tags.filter(function(oldTag) {
+          return newTag.name === oldTag.name;
+        }).length > 0
+        if (!containsTag) {
+          tagList.tags.push(newTag)
+        }
+        return newTag;
       })
       var newIdea = new Idea(response.id, title, body, response.quality, tags)
       ideaList.ideas.unshift(newIdea);

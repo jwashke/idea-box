@@ -4,6 +4,11 @@ var view = {
   },
   drawIdeas: function() {
     $('.ideas').empty();
+    $('.tags').empty();
+    $('.tags').append("<span class='label label-pill label-danger pill-tag'>all</span>");
+    tagList.tags.forEach(function(tag) {
+      $('.tags').append(tag.html);
+    });
     ideaList.ideas.forEach(function(idea) {
       $('.ideas').append(idea.html());
     });
@@ -23,6 +28,9 @@ var view = {
     $('.ideas').focusout(function(event) {
       handlers.delegateFocusout(event);
     });
+    $('.tags').click(function(event) {
+      handlers.tagClick(event);
+    })
   },
   setupSearchListener: function() {
     $('#searchBar').on('input', function() {
@@ -44,5 +52,20 @@ var view = {
       ideaList.orderIdeas();
       view.drawIdeas();
     })
+  },
+  showAllIdeas: function() {
+    ideaList.ideas.forEach(function(idea) {
+      $idea = $('#' + idea.id);
+      $idea.show();
+    });
+  },
+  filterIdeasByTag: function(text) {
+    ideaList.ideas.forEach(function(idea) {
+      $idea = $('#' + idea.id)
+      var ideaTagsInclude = idea.tags.filter(function(tag) {
+        return tag.name == text;
+      }).length > 0
+      ideaTagsInclude ? $idea.show() : $idea.hide();
+    });
   }
 }

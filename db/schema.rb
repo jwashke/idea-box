@@ -30,8 +30,9 @@ ActiveRecord::Schema.define(version: 20160630002648) do
     t.string   "title"
     t.text     "body"
     t.integer  "quality",    default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.boolean  "active",     default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "tags", force: :cascade do |t|

@@ -41,11 +41,11 @@ Idea.prototype.editIdea = function(target, value) {
 Idea.prototype.html = function() {
   var html =  "<div id = '" + this.id + "'class='col-xs-12 idea-info idea-" + this.id + "'>" +
               "<h4 class='ideaTitle icon-title'>" + this.title + "</h4> " +
-              "<a class='icon-button delete-button pull-right delete-" + this.id + "' id='" + this.id + "'><i id='" + this.id + "'class='fa fa-times fa-lg deleteButton'></i></a>" +
+              "<i id='" + this.id + "'class='fa fa-times fa-lg deleteButton pull-right delete'></i>" +
               "<p class='ideaBody'>" + this.body + "</p>" +
               "<p>Quality: " + this.quality +
-              "<br><a class='icon-button thumbs-up-" + this.id + "' id='" + this.id + "'><i id='" + this.id + "' class='fa fa-thumbs-up fa-lg thumbsUpButton'></i></a>" +
-              "    <a class='icon-button thumbs-down-" + this.id + "' id='" + this.id + "'><i id='" + this.id + "' class='fa fa-thumbs-down fa-lg thumbsDownButton'></i></a></p>"
+              "<br><i id='" + this.id + "' class='fa fa-thumbs-up fa-lg thumbsUpButton thumb'></i>" +
+              "<i id='" + this.id + "' class='fa fa-thumbs-down fa-lg thumbsDownButton thumb'></i></p>"
   this.tags.forEach(function(tag) {
     html = html + "<span class='label label-pill label-primary pill-tag'>" + tag.name + "</span>"
   })
