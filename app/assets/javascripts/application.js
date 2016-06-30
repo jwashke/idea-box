@@ -11,7 +11,3 @@
 // about supported directives.
 //
 alert('working');
-//= require jquery
-//= require tether
-//= require bootstrap
-//= require_tree .
