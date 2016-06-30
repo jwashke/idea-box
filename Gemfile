@@ -13,6 +13,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem "font-awesome-rails"
 gem 'faker'
 gem 'rails_12factor'
+gem 'rails-assets-tether', '>= 1.1.0'
+
 
 
 group :development, :test do
