@@ -5,6 +5,7 @@ class Api::V1::IdeasController < Api::V1::ApiController
 
   def create
     @idea = Idea.new(idea_params)
+    @idea.find_or_create_tags(params[:tags])
     render status: 400 unless @idea.save
   end
 

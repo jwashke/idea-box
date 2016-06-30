@@ -1,5 +1,7 @@
 class Idea < ActiveRecord::Base
   validates :title, presence: true
+  has_many :idea_tags
+  has_many :tags, through: :idea_tags
 
   enum quality: %w(swill plausible genius)
 
@@ -11,5 +13,12 @@ class Idea < ActiveRecord::Base
   def cycle_quality_down
     self.swill! if self.plausible?
     self.plausible! if self.genius?
+  end
+
+  def find_or_create_tags(tags)
+    tags.each do |tag|
+      self.tags << Tag.first_or_create(name: tag)
+    end
+    self.save
   end
 end

@@ -4,5 +4,5 @@ json.ideas @ideas do |idea|
   json.body idea.body
   json.quality idea.quality
   json.created_at idea.created_at
-  json.tags []
+  json.tags idea.tags
 end
