@@ -9,13 +9,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'responders'
-gem 'bootstrap'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem "font-awesome-rails"
 gem 'faker'
 gem 'rails_12factor'
-source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.1.0'
-end
 
 
 group :development, :test do
