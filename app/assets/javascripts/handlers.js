@@ -1,10 +1,12 @@
 var handlers = {
   createIdea: function() {
-    var newIdeaTitleInput = $('#newTitle');
-    var newIdeaBodyInput = $('#newBody');
-    ideaService.createIdea(newIdeaTitleInput.val(), newIdeaBodyInput.val());
-    newIdeaTitleInput.val('');
-    newIdeaBodyInput.val('');
+    var newIdeaTitle = $('#newTitle');
+    var newIdeaBody = $('#newBody');
+    var newIdeaTags = $('#newTags')
+    ideaService.createIdea(newIdeaTitle.val(), newIdeaBody.val(), newIdeaTags.val());
+    newIdeaTitle.val('');
+    newIdeaBody.val('');
+    newIdeaTags.val('');
   },
   delegateClick: function(event) {
     var target = event.target;
