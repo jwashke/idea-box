@@ -47,7 +47,7 @@ Idea.prototype.html = function() {
               "<br><a class='icon-button thumbs-up-" + this.id + "' id='" + this.id + "'><i id='" + this.id + "' class='fa fa-thumbs-up fa-lg thumbsUpButton'></i></a>" +
               "    <a class='icon-button thumbs-down-" + this.id + "' id='" + this.id + "'><i id='" + this.id + "' class='fa fa-thumbs-down fa-lg thumbsDownButton'></i></a></p>"
   this.tags.forEach(function(tag) {
-    html = html + "<span class='label label-pill label-primary pill-tag'>" + tag + "</span>"
+    html = html + "<span class='label label-pill label-primary pill-tag'>" + tag.name + "</span>"
   })
   html = html + "<br><hr class='idea-line'><br></div>"
   return html;

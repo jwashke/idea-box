@@ -17,7 +17,7 @@ class Idea < ActiveRecord::Base
 
   def find_or_create_tags(tags)
     tags.each do |tag|
-      self.tags << Tag.first_or_create(name: tag)
+      self.tags << Tag.where(name: tag).first_or_create
     end
     self.save
   end

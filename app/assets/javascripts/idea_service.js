@@ -5,14 +5,17 @@ var ideaService = {
       ideas.forEach(function(idea) {
         if (idea.body.length > 100)
           idea.body = idea.body.substring(0, 100).split(" ").slice(0, -1).join(" ") + "...";
-        var newIdea = new Idea(idea.id, idea.title, idea.body, idea.quality, idea.tags)
+        var tags = idea.tags.map(function(tag) {
+          return new Tag(tag.name);
+        })
+        var newIdea = new Idea(idea.id, idea.title, idea.body, idea.quality, tags)
         ideaList.ideas.push(newIdea)
       });
       view.drawIdeas();
     });
   },
   createIdea: function(title, body, tags) {
-    tags = tags.split(/[,] ?/)
+    var tags = tags.split(/[,] ?/)
     $.post(
       "/api/v1/ideas",
       {
@@ -23,6 +26,9 @@ var ideaService = {
     ).then(function(response) {
       if (body.length > 100)
         body = body.substring(0, 100).split(" ").slice(0, -1).join(" ") + "...";
+      tags = tags.map(function(tag) {
+        return new Tag(tag);
+      })
       var newIdea = new Idea(response.id, title, body, response.quality, tags)
       ideaList.ideas.unshift(newIdea);
       view.drawIdeas();
