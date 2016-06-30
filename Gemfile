@@ -12,6 +12,7 @@ gem 'responders'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem "font-awesome-rails"
 gem 'faker'
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'byebug'
