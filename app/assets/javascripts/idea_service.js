@@ -3,9 +3,8 @@ var ideaService = {
     $.getJSON("/api/v1/ideas").then(function(response) {
       var ideas = response.ideas
       ideas.forEach(function(idea) {
-        if (idea.body.length > 100) {
+        if (idea.body.length > 100) 
           idea.body = idea.body.substring(0, 100).split(" ").slice(0, -1).join(" ") + "...";
-        }
         var newIdea = new Idea(idea.id, idea.title, idea.body, idea.quality)
         ideaList.ideas.push(newIdea)
       });
@@ -20,9 +19,8 @@ var ideaService = {
         body: body
       }
     ).then(function(response) {
-      if (body.length > 100) {
+      if (body.length > 100)
         body = body.substring(0, 100).split(" ").slice(0, -1).join(" ") + "...";
-      }
       var newIdea = new Idea(response.id, title, body, response.quality)
       ideaList.ideas.unshift(newIdea);
       view.drawIdeas();

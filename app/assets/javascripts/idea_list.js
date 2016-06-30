@@ -39,7 +39,7 @@ var ideaList = {
         return -1;
       if (a.quality > b.quality)
         return 1;
-      return 0 
+      return 0
     })
   },
   findIdea: function(id) {

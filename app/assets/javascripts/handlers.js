@@ -10,7 +10,7 @@ var handlers = {
     var target = event.target;
     var id = target.id
     if (target.className.includes('deleteButton')) {
-      this.deleteIdea();
+      this.deleteIdea(id);
     } else if (target.className.includes('thumbsUpButton')) {
       this.thumbsUpIdea(id);
     } else if (target.className.includes('thumbsDownButton')) {

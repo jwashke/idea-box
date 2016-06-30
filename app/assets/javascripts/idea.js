@@ -6,21 +6,17 @@ var Idea = function(id, title, body, quality) {
 };
 
 Idea.prototype.thumbsUp = function() {
-  console.log(this.quality)
-  if (this.quality === "swill") {
-    this.quality = "plausible";
-  } else if (this.quality === "plausible") {
+  if (this.quality === "plausible")
     this.quality = "genius";
-  }
-  console.log(this.quality)
+  if (this.quality === "swill")
+    this.quality = "plausible";
 }
 
 Idea.prototype.thumbsDown = function() {
-  if (this.quality === "genius") {
-    this.quality = "plausible";
-  }  else if (this.quality === "plausible") {
+  if (this.quality === "plausible")
     this.quality = "swill";
-  }
+  if (this.quality === "genius")
+    this.quality = "plausible";
 }
 
 Idea.prototype.editIdea = function(target, value) {
