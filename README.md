@@ -1,4 +1,4 @@
-# Commissionrableio
+# Idea Box
 
 [Heroku](http://ideas-box.herokuapp.com/)
 
@@ -6,7 +6,7 @@
 
 ![screenshot](https://s3-us-west-2.amazonaws.com/project-screenshots/idea-box.jpg)
 
-An place to store your Ideas! Users can create, edit, and delete ideas, search for ideas by title, description, or tags. And sort ideas by quality. All features are accessed from a single view using AJAX.
+A place to store your Ideas! Users can create, edit, and delete ideas, search for ideas by title, description, or tags. And sort ideas by quality. All features are accessed from a single view using AJAX.
 
 ## Setup
 
