@@ -20,6 +20,7 @@ end
 
 group :development, :test do
   gem 'byebug'
+  gem 'chromedriver-helper'
 end
 
 group :development do

@@ -8,6 +8,12 @@ require "rspec/rails"
 require "capybara/rails"
 require "database_cleaner"
 
+Capybara.app_host = 'http://localhost:3000'
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|

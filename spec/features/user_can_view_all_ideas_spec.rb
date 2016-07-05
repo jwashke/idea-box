@@ -1,12 +1,12 @@
 require "rails_helper"
 
 feature "User can visit root path to view ideas", js: true do
-  xscenario "They fill in the form to create a new idea" do
+  scenario "They fill in the form to create a new idea" do
     visit "/"
 
     fill_in :newTitle, with: "Idea Title"
     fill_in :newBody, with: "Idea Body"
-    click_button "Submit"
+    click_button "Save"
 
     wait_for_ajax_to_finish
 
